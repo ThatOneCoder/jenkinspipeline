@@ -3,7 +3,9 @@ pipeline {
     stages{
         stage('Build'){
             steps {
-                sh 'mvn clean package'
+                withEnv(['M2_HOME=/usr/local/Cellar/maven/3.3.9/libexec']) {
+                    sh 'mvn clean package'
+                }
             }
             post {
                 success {
